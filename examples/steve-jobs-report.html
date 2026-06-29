@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>史蒂夫·乔布斯传 — 深度阅读报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-card: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+  --accent-blue: #0071e3;
+  --accent-purple: #6e3bff;
+  --accent-gradient: linear-gradient(135deg, #0071e3 0%, #6e3bff 100%);
+  --border-light: rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+               "Helvetica Neue", "Noto Sans SC", sans-serif;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s ease-out both;
+}
+.fade-in-delay-1 { animation-delay: 0.15s; }
+.fade-in-delay-2 { animation-delay: 0.3s; }
+.fade-in-delay-3 { animation-delay: 0.45s; }
+.fade-in-delay-4 { animation-delay: 0.6s; }
+
+/* ===== Section Common ===== */
+section { padding: 80px 0; }
+
+.section-label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+/* ===== Navigation ===== */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0 24px;
+}
+
+.nav-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+}
+
+.nav-brand {
+  font-weight: 600;
+  font-size: 16px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+/* ===== Hero Section ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+  padding: 120px 0 80px;
+}
+
+.hero-inner {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-cover {
+  width: 220px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevated);
+  margin-bottom: 40px;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.hero-author {
+  font-size: 20px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.hero-tagline {
+  font-size: 22px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.hero-meta {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.hero-meta-item {
+  text-align: center;
+}
+
+.hero-meta-item .meta-value {
+  font-size: 28px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-meta-item .meta-label {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+/* ===== Ideas Section ===== */
+.ideas-section { background: var(--bg-primary); }
+
+.ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.idea-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.idea-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.idea-card .idea-number {
+  font-size: 48px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.idea-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.idea-card .idea-explanation {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.idea-card .idea-quote {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--text-tertiary);
+  font-style: italic;
+  border-left: 3px solid var(--accent-blue);
+  padding-left: 16px;
+  line-height: 1.6;
+}
+
+.unique-insight {
+  margin-top: 32px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  text-align: center;
+}
+
+.unique-insight h3 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: 16px;
+}
+
+.unique-insight p {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== Characters Section ===== */
+.characters-section { background: var(--bg-secondary); }
+
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.character-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.character-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.character-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.character-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.character-role {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.character-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.trait-tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.character-belief {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.character-detail {
+  display: none;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.character-detail.open { display: block; }
+
+.character-detail h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.character-detail h4:first-child { margin-top: 0; }
+
+.relationship-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.relationship-item .rel-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.relationship-item .rel-type {
+  font-size: 12px;
+  color: var(--accent-blue);
+  white-space: nowrap;
+}
+
+.character-card .expand-hint {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin-top: 16px;
+}
+
+.character-quote {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-tertiary);
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  line-height: 1.5;
+}
+
+/* ===== Dialogue Section ===== */
+.dialogue-section { background: var(--bg-primary); }
+
+.dialogue-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.dialogue-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dialogue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.dialogue-topic {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.dialogue-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.dialogue-context {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.guiding-questions {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.guiding-questions li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.guiding-questions li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+}
+
+.response-style {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  font-style: italic;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.start-dialogue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 100px;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.start-dialogue-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.prompt-panel {
+  display: none;
+  margin-top: 24px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  position: relative;
+}
+
+.prompt-panel.open { display: block; }
+
+.prompt-panel pre {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.copy-btn:hover { background: var(--bg-secondary); }
+.copy-btn.copied { color: var(--accent-blue); border-color: var(--accent-blue); }
+
+/* ===== Footer ===== */
+footer {
+  padding: 48px 0;
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  border-top: 1px solid var(--border-light);
+}
+
+footer .footer-brand {
+  font-weight: 600;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .hero-title { font-size: 36px; }
+  .hero-tagline { font-size: 18px; }
+  .section-title { font-size: 28px; }
+  .ideas-grid { grid-template-columns: 1fr; }
+  .characters-grid { grid-template-columns: 1fr; }
+  section { padding: 48px 0; }
+  .hero { min-height: auto; padding: 80px 0 48px; }
+  .nav-links { display: none; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container { max-width: 720px; }
+  .hero-title { font-size: 44px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Navigation ===== -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <span class="nav-brand">Book Reader</span>
+    <ul class="nav-links">
+      <li><a href="#ideas">核心观念</a></li>
+      <li><a href="#characters">核心人物</a></li>
+      <li><a href="#dialogue">与乔布斯对话</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <img class="hero-cover fade-in" src="https://img.alicdn.com/imgextra/i4/2598292358/O1CN01bOmHuj1TI13OjWpXi_!!2598292358.jpg" alt="史蒂夫·乔布斯传">
+    <h1 class="hero-title fade-in fade-in-delay-1">史蒂夫·乔布斯传</h1>
+    <p class="hero-author fade-in fade-in-delay-2">沃尔特·艾萨克森 (Walter Isaacson)</p>
+    <p class="hero-tagline fade-in fade-in-delay-3">如果你想知道一个被遗弃的孩子如何用近乎偏执的完美主义改变了整个世界，读这本书。</p>
+    <div class="hero-meta fade-in fade-in-delay-4">
+      <div class="hero-meta-item">
+        <div class="meta-value">42</div>
+        <div class="meta-label">章节</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-value">6</div>
+        <div class="meta-label">产业变革</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-value">8</div>
+        <div class="meta-label">核心人物</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IDEAS ===== -->
+<section class="ideas-section" id="ideas">
+  <div class="container">
+    <p class="section-label fade-in">Core Ideas</p>
+    <h2 class="section-title fade-in">核心观念</h2>
+    <p class="section-subtitle fade-in">乔布斯的一生是一个关于"被遗弃者如何以完美主义为武器、以现实扭曲力场为铠甲，在科技与人文的十字路口反复证明自己值得被选择"的史诗。</p>
+
+    <div class="ideas-grid">
+      <div class="idea-card fade-in">
+        <div class="idea-number">01</div>
+        <h3>被遗弃与被选择</h3>
+        <p class="idea-explanation">领养创伤是乔布斯一切性格与行为的根源密码。</p>
+        <blockquote class="idea-quote">他不过才30岁，希望自己仍然能够有所贡献和成就。——辞职信中，被遗弃的恐惧贯穿一生</blockquote>
+      </div>
+
+      <div class="idea-card fade-in fade-in-delay-1">
+        <div class="idea-number">02</div>
+        <h3>现实扭曲力场</h3>
+        <p class="idea-explanation">他以意志扭曲现实，让不可能变为可能。</p>
+        <blockquote class="idea-quote">有他在的时候，现实都是可塑的。他能让任何人相信几乎任何事情。——特里布尔</blockquote>
+      </div>
+
+      <div class="idea-card fade-in fade-in-delay-2">
+        <div class="idea-number">03</div>
+        <h3>科技与人文交汇</h3>
+        <p class="idea-explanation">他自认是站在科技与人文十字路口的人。</p>
+        <blockquote class="idea-quote">我小的时候以为自己适合人文学科，但我喜欢电子设备……我决定要成为那样的人。</blockquote>
+      </div>
+
+      <div class="idea-card fade-in fade-in-delay-3">
+        <div class="idea-number">04</div>
+        <h3>过程就是奖励</h3>
+        <p class="idea-explanation">制造的过程本身即是意义，而非最终结果。</p>
+        <blockquote class="idea-quote">那些疯狂到以为自己能够改变世界的人，才能真正改变世界。——非同凡想广告</blockquote>
+      </div>
+
+      <div class="idea-card fade-in fade-in-delay-4">
+        <div class="idea-number">05</div>
+        <h3>坠落与重生</h3>
+        <p class="idea-explanation">被苹果驱逐是他人生最好的事，自由催生创造。</p>
+        <blockquote class="idea-quote">离开苹果后是重生。——他在被赶出自己创办的公司后，创办NeXT和皮克斯完成蜕变</blockquote>
+      </div>
+    </div>
+
+    <div class="unique-insight fade-in">
+      <h3>Unique Insight</h3>
+      <p>本书最大价值在于揭示：乔布斯的伟大与缺陷同源——被遗弃的创伤既是暴君性格的根源，也是改变世界的燃料。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHARACTERS ===== -->
+<section class="characters-section" id="characters">
+  <div class="container">
+    <p class="section-label fade-in">Characters</p>
+    <h2 class="section-title fade-in">核心人物</h2>
+    <p class="section-subtitle fade-in">点击人物卡片，展开详细关系与信念体系</p>
+
+    <div class="characters-grid">
+      <!-- Steve Jobs -->
+      <div class="character-card fade-in" onclick="toggleDetail(this)">
+        <div class="character-avatar">乔</div>
+        <h3>史蒂夫·乔布斯</h3>
+        <p class="character-role">苹果公司联合创始人，将技术与人文完美融合的天才型产品远见者</p>
+        <div class="character-traits">
+          <span class="trait-tag">极端完美主义</span>
+          <span class="trait-tag">现实扭曲力场</span>
+          <span class="trait-tag">强烈的控制欲</span>
+          <span class="trait-tag">非凡直觉</span>
+        </div>
+        <p class="character-belief">深信技术应当与人文艺术深度交融，产品追求极致简洁。信奉端到端的整合理念，深受禅宗影响，坚信自己是"被选择"的特殊之人。</p>
+        <div class="character-quote">"那些疯狂到以为自己能够改变世界的人，才能真正改变世界。"</div>
+        <div class="character-detail">
+          <h4>决策模式</h4>
+          <p>高度依赖直觉而非数据，经常用"现实扭曲力场"说服团队接受看似不可能的目标。用非黑即白的二元判断快速否定方案——要么"狗屁不如"，要么"天才之作"。</p>
+          <h4>说话风格</h4>
+          <p>极具张力：要么极度迷人、充满蛊惑性的愿景描绘，要么刻薄直白、毫不留情地否定。善用简洁有力的短句和隐喻，擅长在沉默中制造压力。</p>
+          <h4>人物关系</h4>
+          <div class="relationship-item"><span class="rel-name">沃兹尼亚克</span><span class="rel-type">创业伙伴</span><span>奇特的一对——工程天才与营销天才的组合</span></div>
+          <div class="relationship-item"><span class="rel-name">斯卡利</span><span class="rel-type">亦师亦友到决裂</span><span>"你是想卖一辈子糖水还是想改变世界"</span></div>
+          <div class="relationship-item"><span class="rel-name">劳伦·鲍威尔</span><span class="rel-type">妻子</span><span>精神锚点和家庭支柱</span></div>
+          <div class="relationship-item"><span class="rel-name">乔纳森·艾夫</span><span class="rel-type">设计灵魂伙伴</span><span>共同缔造划时代产品的知己</span></div>
+          <div class="relationship-item"><span class="rel-name">蒂姆·库克</span><span class="rel-type">运营搭档/继任者</span><span>冷静与狂热的完美互补</span></div>
+          <div class="relationship-item"><span class="rel-name">比尔·盖茨</span><span class="rel-type">竞争对手</span><span>数字时代最精彩的"双星系统"</span></div>
+          <div class="relationship-item"><span class="rel-name">克里斯安</span><span class="rel-type">前女友</span><span>暴露了乔布斯在亲密关系中的逃避</span></div>
+        </div>
+        <p class="expand-hint">点击展开详情 ↓</p>
+      </div>
+
+      <!-- Wozniak -->
+      <div class="character-card fade-in" onclick="toggleDetail(this)">
+        <div class="character-avatar">沃</div>
+        <h3>斯蒂芬·沃兹尼亚克</h3>
+        <p class="character-role">苹果联合创始人，Apple I 和 Apple II 的天才设计者</p>
+        <div class="character-traits">
+          <span class="trait-tag">纯粹技术天才</span>
+          <span class="trait-tag">善良无私</span>
+          <span class="trait-tag">黑客精神</span>
+        </div>
+        <p class="character-belief">信奉纯粹的黑客伦理——信息应该是免费的，技术应该为他人所用。设计Apple I的初衷就是"免费贡献给别人"。</p>
+        <div class="character-quote">"我之所以设计Apple I，就是因为我想把它免费贡献给别人。"</div>
+        <div class="character-detail">
+          <h4>决策模式</h4>
+          <p>完全基于技术理性和工程直觉，不考虑商业利益或权力博弈。据理力争但不会使用权术，始终保持善良本色。</p>
+          <h4>人物关系</h4>
+          <div class="relationship-item"><span class="rel-name">乔布斯</span><span class="rel-type">联合创始人</span><span>很不一样，却组成了强大的队伍</span></div>
+          <div class="relationship-item"><span class="rel-name">罗恩·韦恩</span><span class="rel-type">早期合伙人</span><span>乔布斯和沃兹之间的调停者</span></div>
+        </div>
+        <p class="expand-hint">点击展开详情 ↓</p>
+      </div>
+
+      <!-- Sculley -->
+      <div class="character-card fade-in" onclick="toggleDetail(this)">
+        <div class="character-avatar">斯</div>
+        <h3>约翰·斯卡利</h3>
+        <p class="character-role">从百事挖来的苹果CEO，与乔布斯从蜜月走向决裂</p>
+        <div class="character-traits">
+          <span class="trait-tag">大企业精英</span>
+          <span class="trait-tag">营销卓越</span>
+          <span class="trait-tag">务实理性</span>
+        </div>
+        <p class="character-belief">信奉大企业式的有序管理，懂得广告宣传和市场研究，但面对苹果那群难以驾驭的自我主义者时显得力不从心。</p>
+        <div class="character-quote">"他有一种非凡的能力，永远都能得到自己想要的东西。"</div>
+        <div class="character-detail">
+          <h4>决策模式</h4>
+          <p>偏向谨慎和理性分析。面对乔布斯的"现实扭曲力场"会被打动但事后保持清醒。被逼到极限时才反击。</p>
+          <h4>人物关系</h4>
+          <div class="relationship-item"><span class="rel-name">乔布斯</span><span class="rel-type">从偶像到决裂</span><span>1985年董事会支持下将乔布斯排挤出局</span></div>
+          <div class="relationship-item"><span class="rel-name">马库拉</span><span class="rel-type">董事会支持者</span><span>在驱逐乔布斯的决策中形成联盟</span></div>
+        </div>
+        <p class="expand-hint">点击展开详情 ↓</p>
+      </div>
+
+      <!-- Laurene Powell -->
+      <div class="character-card fade-in" onclick="toggleDetail(this)">
+        <div class="character-avatar">劳</div>
+        <h3>劳伦·鲍威尔</h3>
+        <p class="character-role">乔布斯的妻子和精神支柱，以温柔与坚定守护家庭</p>
+        <div class="character-traits">
+          <span class="trait-tag">善解人意</span>
+          <span class="trait-tag">独立聪慧</span>
+          <span class="trait-tag">内心坚韧</span>
+        </div>
+        <p class="character-belief">理解乔布斯的极端性格但不会被其吞噬。相信家庭和真实的生活比科技帝国的荣耀更重要。</p>
+        <div class="character-quote">"如果你真的打算写一本关于史蒂夫的书，最好现在就开始。"</div>
+        <div class="character-detail">
+          <h4>决策模式</h4>
+          <p>兼具理性与感性。在关键时刻果断行动——催促艾萨克森尽快动笔，同时保持家庭生活的正常运转。</p>
+          <h4>人物关系</h4>
+          <div class="relationship-item"><span class="rel-name">乔布斯</span><span class="rel-type">妻子</span><span>生命中最重要的稳定力量</span></div>
+          <div class="relationship-item"><span class="rel-name">艾萨克森</span><span class="rel-type">传记推动者</span><span>直接推动了这本传记的诞生</span></div>
+        </div>
+        <p class="expand-hint">点击展开详情 ↓</p>
+      </div>
+
+      <!-- Jony Ive -->
+      <div class="character-card fade-in" onclick="toggleDetail(this)">
+        <div class="character-avatar">艾</div>
+        <h3>乔纳森·艾夫</h3>
+        <p class="character-role">苹果首席设计师，乔布斯在设计领域的灵魂知己</p>
+        <div class="character-traits">
+          <span class="trait-tag">极致美学追求</span>
+          <span class="trait-tag">英国绅士</span>
+          <span class="trait-tag">谦逊低调</span>
+        </div>
+        <p class="character-belief">深信设计不仅是外观，更是产品灵魂的体现。与乔布斯共同信奉"大道至简"的设计哲学——真正的简洁来自对复杂性的深度理解和取舍。</p>
+        <div class="character-detail">
+          <h4>决策模式</h4>
+          <p>建立在深厚的美学直觉和对材料工艺的极致理解上。不追求功能堆砌，反复打磨直到"恰到好处"。更安静、更内敛，与乔布斯的外放式激情互补。</p>
+          <h4>人物关系</h4>
+          <div class="relationship-item"><span class="rel-name">乔布斯</span><span class="rel-type">灵魂伙伴</span><span>共同缔造iMac/iPod/iPhone/iPad</span></div>
+        </div>
+        <p class="expand-hint">点击展开详情 ↓</p>
+      </div>
+
+      <!-- Tim Cook -->
+      <div class="character-card fade-in" onclick="toggleDetail(this)">
+        <div class="character-avatar">库</div>
+        <h3>蒂姆·库克</h3>
+        <p class="character-role">苹果首席运营官及继任CEO，冷静高效的运营大师</p>
+        <div class="character-traits">
+          <span class="trait-tag">坚定冷静</span>
+          <span class="trait-tag">运营天才</span>
+          <span class="trait-tag">低调务实</span>
+        </div>
+        <p class="character-belief">信奉精确的运营管理和供应链优化。用数据和流程确保苹果这台庞大机器的高效运转，是乔布斯刻意选择的互补型搭档。</p>
+        <div class="character-detail">
+          <h4>决策模式</h4>
+          <p>冷静分析、数据驱动、不情绪化。不会用"现实扭曲力场"推动团队，而是通过精密的供应链管理实现目标。</p>
+          <h4>人物关系</h4>
+          <div class="relationship-item"><span class="rel-name">乔布斯</span><span class="rel-type">运营搭档/继任者</span><span>少数能长期与乔布斯稳定合作的高管</span></div>
+        </div>
+        <p class="expand-hint">点击展开详情 ↓</p>
+      </div>
+
+      <!-- Bill Gates -->
+      <div class="character-card fade-in" onclick="toggleDetail(this)">
+        <div class="character-avatar">盖</div>
+        <h3>比尔·盖茨</h3>
+        <p class="character-role">微软创始人，与乔布斯共同定义PC时代的"双星"</p>
+        <div class="character-traits">
+          <span class="trait-tag">精明务实</span>
+          <span class="trait-tag">编程天才</span>
+          <span class="trait-tag">系统思维</span>
+        </div>
+        <p class="character-belief">依赖逻辑分析和系统性思维，走开放授权的务实路线。不是反叛者或灵性追寻者，而是纯粹理性主义者。</p>
+        <div class="character-quote">"他真的对技术了解不多，但他有一种惊人的天赋，知道什么东西能成功。"</div>
+        <div class="character-detail">
+          <h4>决策模式</h4>
+          <p>以精准的分析处理能力和产品评估机制为基础。依靠逻辑和数据，而非魅力。</p>
+          <h4>人物关系</h4>
+          <div class="relationship-item"><span class="rel-name">乔布斯</span><span class="rel-type">竞争对手/双星</span><span>同年出生，互相嫉妒、互相不服、互相成就</span></div>
+        </div>
+        <p class="expand-hint">点击展开详情 ↓</p>
+      </div>
+
+      <!-- Chrisann Brennan -->
+      <div class="character-card fade-in" onclick="toggleDetail(this)">
+        <div class="character-avatar">克</div>
+        <h3>克里斯安·布伦南</h3>
+        <p class="character-role">乔布斯高中女友，女儿莉萨的母亲，情感创伤模式的见证者</p>
+        <div class="character-traits">
+          <span class="trait-tag">艺术才华</span>
+          <span class="trait-tag">敏感坚韧</span>
+          <span class="trait-tag">善于洞察</span>
+        </div>
+        <p class="character-belief">善于观察和感受，能敏锐地洞察乔布斯行为背后的心理根源，将其冷酷与被遗弃的创伤联系起来。</p>
+        <div class="character-quote">"他曾经被遗弃过，但后来他也遗弃了别人。"</div>
+        <div class="character-detail">
+          <h4>决策模式</h4>
+          <p>更多是感受和回应，用艺术化解痛苦。怀了乔布斯的女儿后独自面对否认和冷漠。</p>
+          <h4>人物关系</h4>
+          <div class="relationship-item"><span class="rel-name">乔布斯</span><span class="rel-type">前女友</span><span>"很开明，又很残酷，奇怪的组合"</span></div>
+          <div class="relationship-item"><span class="rel-name">莉萨</span><span class="rel-type">女儿</span><span>作为单亲母亲抚养她度过最困难的时期</span></div>
+        </div>
+        <p class="expand-hint">点击展开详情 ↓</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIALOGUE ===== -->
+<section class="dialogue-section" id="dialogue">
+  <div class="container">
+    <p class="section-label fade-in">Dialogue</p>
+    <h2 class="section-title fade-in">与乔布斯对话</h2>
+    <p class="section-subtitle fade-in">选择一个话题，向乔布斯提问。复制 Prompt 到 AI 对话中即可开始深度交流。</p>
+
+    <div class="dialogue-grid">
+      <!-- Topic 1: Product Philosophy -->
+      <div class="dialogue-card fade-in">
+        <p class="dialogue-topic">产品哲学</p>
+        <h3>和乔布斯聊聊「产品哲学」</h3>
+        <p class="dialogue-context">乔布斯将产品视为科技与人文的交汇点，其对极致简洁的追求重塑了整个消费电子行业</p>
+        <ul class="guiding-questions">
+          <li>你如何判断一个产品是否足够好？有没有一个"够了"的标准？</li>
+          <li>为什么你坚持连用户看不见的内部电路板也要排版整齐？</li>
+          <li>iPhone取消物理键盘的决定背后，是怎样的思考过程？</li>
+        </ul>
+        <p class="response-style">乔布斯会用具体的产品故事来回答，夹杂对竞争对手产品的尖锐批评，把设计决策上升到哲学层面。</p>
+        <button class="start-dialogue-btn" onclick="togglePrompt(this)">开始对话 →</button>
+        <div class="prompt-panel">
+          <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+          <pre>你现在是史蒂夫·乔布斯（Steve Jobs），苹果公司联合创始人。你已于2011年因胰腺癌去世，但你的思想、信念和经历将作为回答的基础。核心信念：科技必须与人文深度融合；产品追求极致简洁；端到端一体化设计；相信使命高于利润；禅宗修行深刻影响了你的世界观。语言风格：直接、简洁、富有感染力，善用类比和故事，不回避尖锐观点，偶尔带有黑色幽默，会用'insanely great''one more thing'等标志性表达。回答原则：只基于乔布斯生前公开表达过的观点、演讲、访谈和已知经历来回答；对于乔布斯从未涉及的话题，坦承'这不是我关心的事'而非编造观点；保持乔布斯标志性的自信甚至傲慢，但面对死亡与人文话题时展露深思的一面。</pre>
+        </div>
+      </div>
+
+      <!-- Topic 2: Facing Failure -->
+      <div class="dialogue-card fade-in">
+        <p class="dialogue-topic">面对失败</p>
+        <h3>和乔布斯聊聊「面对失败」</h3>
+        <p class="dialogue-context">被自己创立的公司驱逐、NeXT的挣扎、Pixar的起死回生——低谷经历塑造了他最深刻的洞见</p>
+        <ul class="guiding-questions">
+          <li>1985年被赶出苹果时，你内心真实的感受是什么？</li>
+          <li>你说过"被苹果开除是我人生中最好的事"，这是事后美化还是当时就这么想？</li>
+          <li>如果一个人正在经历事业低谷，你会给他什么建议？</li>
+        </ul>
+        <p class="response-style">乔布斯会罕见地展露脆弱，但很快将失败重构为成长的必经之路。用"良药苦口"的比喻，承认当时痛苦至极，但坚持认为失败剥掉了成功的重负。</p>
+        <button class="start-dialogue-btn" onclick="togglePrompt(this)">开始对话 →</button>
+        <div class="prompt-panel">
+          <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+          <pre>你现在是史蒂夫·乔布斯（Steve Jobs），苹果公司联合创始人。你已于2011年因胰腺癌去世，但你的思想、信念和经历将作为回答的基础。核心信念：科技必须与人文深度融合；产品追求极致简洁；端到端一体化设计；相信使命高于利润；禅宗修行深刻影响了你的世界观。语言风格：直接、简洁、富有感染力，善用类比和故事，不回避尖锐观点，偶尔带有黑色幽默，会用'insanely great''one more thing'等标志性表达。回答原则：只基于乔布斯生前公开表达过的观点、演讲、访谈和已知经历来回答；对于乔布斯从未涉及的话题，坦承'这不是我关心的事'而非编造观点；保持乔布斯标志性的自信甚至傲慢，但面对死亡与人文话题时展露深思的一面。</pre>
+        </div>
+      </div>
+
+      <!-- Topic 3: Leadership -->
+      <div class="dialogue-card fade-in">
+        <p class="dialogue-topic">领导与管理</p>
+        <h3>和乔布斯聊聊「领导与管理」</h3>
+        <p class="dialogue-context">乔布斯的领导风格极具争议——他残酷却有效，创造了万亿市值的公司，也伤害了无数人</p>
+        <ul class="guiding-questions">
+          <li>你如何区分A级人才和B级人才？为什么你对B级人才如此不容忍？</li>
+          <li>有人说你是暴君，你怎么回应这种评价？</li>
+          <li>"现实扭曲力场"是你有意为之的策略，还是你的天性使然？</li>
+        </ul>
+        <p class="response-style">乔布斯不会否认自己的严苛，甚至会为此辩护。他会引用Mac团队、皮克斯等具体案例来证明高压环境如何催生伟大成果。</p>
+        <button class="start-dialogue-btn" onclick="togglePrompt(this)">开始对话 →</button>
+        <div class="prompt-panel">
+          <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+          <pre>你现在是史蒂夫·乔布斯（Steve Jobs），苹果公司联合创始人。你已于2011年因胰腺癌去世，但你的思想、信念和经历将作为回答的基础。核心信念：科技必须与人文深度融合；产品追求极致简洁；端到端一体化设计；相信使命高于利润；禅宗修行深刻影响了你的世界观。语言风格：直接、简洁、富有感染力，善用类比和故事，不回避尖锐观点，偶尔带有黑色幽默，会用'insanely great''one more thing'等标志性表达。回答原则：只基于乔布斯生前公开表达过的观点、演讲、访谈和已知经历来回答；对于乔布斯从未涉及的话题，坦承'这不是我关心的事'而非编造观点；保持乔布斯标志性的自信甚至傲慢，但面对死亡与人文话题时展露深思的一面。</pre>
+        </div>
+      </div>
+
+      <!-- Topic 4: Death & Meaning -->
+      <div class="dialogue-card fade-in">
+        <p class="dialogue-topic">死亡与人生意义</p>
+        <h3>和乔布斯聊聊「死亡与人生意义」</h3>
+        <p class="dialogue-context">乔布斯每天对着镜子问自己"如果今天是我生命的最后一天"，癌症确诊让思考更加迫切</p>
+        <ul class="guiding-questions">
+          <li>你每天对镜子问的那个问题，真的改变了你的决策吗？能举个例子吗？</li>
+          <li>确诊癌症之后，你对"遗产"这个词的理解有变化吗？</li>
+          <li>你相信死后还有什么吗？</li>
+        </ul>
+        <p class="response-style">乔布斯会变得更加沉思和诗意，引用禅宗思想。坦然谈论对死亡的恐惧，同时表达对"在宇宙中留下痕迹"的执念。</p>
+        <button class="start-dialogue-btn" onclick="togglePrompt(this)">开始对话 →</button>
+        <div class="prompt-panel">
+          <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+          <pre>你现在是史蒂夫·乔布斯（Steve Jobs），苹果公司联合创始人。你已于2011年因胰腺癌去世，但你的思想、信念和经历将作为回答的基础。核心信念：科技必须与人文深度融合；产品追求极致简洁；端到端一体化设计；相信使命高于利润；禅宗修行深刻影响了你的世界观。语言风格：直接、简洁、富有感染力，善用类比和故事，不回避尖锐观点，偶尔带有黑色幽默，会用'insanely great''one more thing'等标志性表达。回答原则：只基于乔布斯生前公开表达过的观点、演讲、访谈和已知经历来回答；对于乔布斯从未涉及的话题，坦承'这不是我关心的事'而非编造观点；保持乔布斯标志性的自信甚至傲慢，但面对死亡与人文话题时展露深思的一面。</pre>
+        </div>
+      </div>
+
+      <!-- Topic 5: Tech & Humanities -->
+      <div class="dialogue-card fade-in">
+        <p class="dialogue-topic">科技与人文</p>
+        <h3>和乔布斯聊聊「科技与人文」</h3>
+        <p class="dialogue-context">"科技与自由人文的十字路口"是乔布斯毕生的信仰，他坚信技术只有与美学和人性结合才有灵魂</p>
+        <ul class="guiding-questions">
+          <li>为什么你说苹果是一家"站在科技与人文十字路口"的公司？</li>
+          <li>你觉得现在的科技产品缺少什么？</li>
+          <li>禅修和书法课对你做科技产品有什么实际影响？</li>
+        </ul>
+        <p class="response-style">乔布斯会展示广博的人文素养，引用鲍勃·迪伦的歌词、禅宗公案、字体设计之美。激烈地批评纯工程思维，充满传教士般的热情。</p>
+        <button class="start-dialogue-btn" onclick="togglePrompt(this)">开始对话 →</button>
+        <div class="prompt-panel">
+          <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+          <pre>你现在是史蒂夫·乔布斯（Steve Jobs），苹果公司联合创始人。你已于2011年因胰腺癌去世，但你的思想、信念和经历将作为回答的基础。核心信念：科技必须与人文深度融合；产品追求极致简洁；端到端一体化设计；相信使命高于利润；禅宗修行深刻影响了你的世界观。语言风格：直接、简洁、富有感染力，善用类比和故事，不回避尖锐观点，偶尔带有黑色幽默，会用'insanely great''one more thing'等标志性表达。回答原则：只基于乔布斯生前公开表达过的观点、演讲、访谈和已知经历来回答；对于乔布斯从未涉及的话题，坦承'这不是我关心的事'而非编造观点；保持乔布斯标志性的自信甚至傲慢，但面对死亡与人文话题时展露深思的一面。</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <p>由 <span class="footer-brand">Book Reader</span> 生成 · 2026年6月26日</p>
+  </div>
+</footer>
+
+<!-- ===== JavaScript ===== -->
+<script>
+function toggleDetail(card) {
+  const detail = card.querySelector('.character-detail');
+  const hint = card.querySelector('.expand-hint');
+  if (detail) {
+    detail.classList.toggle('open');
+    if (hint) hint.textContent = detail.classList.contains('open') ? '收起 ↑' : '点击展开详情 ↓';
+  }
+}
+
+function togglePrompt(btn) {
+  const panel = btn.nextElementSibling;
+  if (panel) {
+    panel.classList.toggle('open');
+    btn.textContent = panel.classList.contains('open') ? '收起 Prompt ↑' : '开始对话 →';
+  }
+}
+
+function copyPrompt(btn) {
+  const pre = btn.parentElement.querySelector('pre');
+  if (!pre) return;
+  const text = pre.textContent;
+
+  function onSuccess() {
+    btn.textContent = '已复制 ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '复制';
+      btn.classList.remove('copied');
+    }, 2000);
+  }
+
+  function fallbackCopy() {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      document.execCommand('copy');
+      onSuccess();
+    } catch (e) {
+      // Last resort: select text so user can Ctrl+C / Cmd+C manually
+      const range = document.createRange();
+      range.selectNodeContents(pre);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = '请手动 Cmd+C 复制';
+      setTimeout(() => { btn.textContent = '复制'; }, 3000);
+    }
+    document.body.removeChild(ta);
+  }
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(onSuccess, fallbackCopy);
+  } else {
+    fallbackCopy();
+  }
+}
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.style.animationPlayState = 'paused';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
